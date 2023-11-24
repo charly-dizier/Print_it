@@ -18,6 +18,7 @@ const slides = [
 ];
 
 let positionActuelSlides = 0;
+let itemLog;
 
 caroussel(positionActuelSlides);
 creationPoint();
@@ -114,8 +115,34 @@ function caroussel(positionActuelSlides) {
 	// on met a jour le point actif 
 	pointActif();
 
-	//console log de position
-	console.log("Itération",positionActuelSlides, "du tableau slide");
-	//console log du contenu de la bannière
-	console.log("La bannière affiche actuellement l'image:", item.image, "et le texte:", item.tagLine);
+	//on donne une valeur a itemLog pour le console log final
+	itemLog = item;
+	//on appelle la function consoleLog
+	consoleLog();
+};
+
+
+///////////////////////////////////////////////////////////////////////
+// Console Log finale (bonus)
+function consoleLog() {
+	//on définit le message d'affichage pour l'itération en cours
+	let affichageIteration = ("L'itération actuel du tableau slide est: ");
+	//on luit ajoute la valeur définit par la position actuel de l'index slide
+	affichageIteration += positionActuelSlides;
+
+	//on définit le message pour l'affichage de l'image en cours
+	let affichageImg = (", l'image afficher est: ");
+	//on luit ajoute la valeur image de l'itération actuellement afficher
+	affichageImg += itemLog.image;
+
+	//on définit le message pour l'affichage du texte
+	let affichageTxt = (", le text afficher est: ");
+	//on lui ajoute la valeur tagLine de l'itération actuellement afficher
+	affichageTxt += itemLog.tagLine;
+
+	//on construit le message log en commencant par l'affichage de l'itératino en cours, puis l'image et enfin le text
+	let affichageMessageLog = affichageIteration + affichageImg + affichageTxt;
+
+	//on affiche le message dans la console
+	console.log(affichageMessageLog);
 };
